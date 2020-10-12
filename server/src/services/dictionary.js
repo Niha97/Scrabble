@@ -1,19 +1,32 @@
-const axios = require('axios');
-const Trie = require('./trie');
+const axios = require("axios");
+const { Trie } = require("./trie");
 
-const getDictionaryWords = (function() {
-  axios.get('http://recruiting.bluenile.com/words.txt').then(res => {
-    const dictionaryWords = res.data.toString().split('\n');
-    const myTrie = new Trie();
+const DICTIONARY_WORDS_URL = "http://recruiting.bluenile.com/words.txt";
+
+/**
+ * IIFE which gets constructed trie of dictionary words
+ *
+ * @returns {function} a getter function for trie
+ * @description Immediately Invoked Function Expression (IIFE),
+ * is used to serve cache purpose, it only constructs trie once
+ * and all instances will share same trie
+ */
+const TrieDictionary = (function () {
+  axios.get(DICTIONARY_WORDS_URL).then((res) => {
+    const dictionaryWords = res.data.toString().split("\n");
+
+    const trie = new Trie();
     dictionaryWords.map((word) => {
-      myTrie.add(word);
+      trie.insert(word);
     });
-    this.constructedTrie = myTrie;
+
+    // trie initialiazation happens only once
+    this.constructedTrie = trie;
   });
-  return function getDictionaryWords() {
+
+  return function getTrie() {
     return this.constructedTrie;
-  }
+  };
 })();
 
-module.exports = getDictionaryWords
-
+module.exports = TrieDictionary;

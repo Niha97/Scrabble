@@ -4,16 +4,11 @@ services:
     container_name: client
     build: ./client
     ports:
-      - '3000:3000'
-    stdin_open: true
+      - '80:80'
+    depends_on:
+      - server
   server:
     container_name: server
     build: ./server
     ports:
       - '8080:8080'
-  nginx:
-    build: ./nginx
-    ports:
-      - '80:80'
-    depends_on:
-      - client

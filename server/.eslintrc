@@ -1,7 +1,6 @@
 {
     "extends": "eslint:recommended",
     "rules" : {
-      "callback-return": 2,
-      "global-require": 1
+      "no-console":1
     }
 }

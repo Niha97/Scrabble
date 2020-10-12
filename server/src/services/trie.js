@@ -1,63 +1,45 @@
-let Node = function() {
-	this.keys = new Map();
-	this.end = false;
-	this.setEnd = function() {
-		this.end = true;
-	};
-	this.isEnd = function() {
-		return this.end;
-	};
-};
+//Trie data structure
+class TrieNode {
+  constructor() {
+    this.keys = new Map();
+    this.end = false;
+  }
 
-let Trie = function() {
+  setEnd(value) {
+    this.end = value;
+  }
 
-	this.root = new Node();
+  isEnd() {
+    return this.end;
+  }
+}
 
-	this.add = function(input, node = this.root) {
-		if (input.length == 0) {
-			node.setEnd();
-			return;
-		} else if (!node.keys.has(input[0])) {
-			node.keys.set(input[0], new Node());
-			return this.add(input.substr(1), node.keys.get(input[0]));
-		} else {
-			return this.add(input.substr(1), node.keys.get(input[0]));
-		};
-	};
+/**
+ * Initialize trie here.
+ */
+class Trie {
+  constructor() {
+    this.root = new TrieNode();
+  }
 
-	this.isWord = function(word) {
-		let node = this.root;
-		while (word.length > 1) {
-			if (!node.keys.has(word[0])) {
-				return false;
-			} else {
-				node = node.keys.get(word[0]);
-				word = word.substr(1);
-			};
-		};
-		return (node.keys.has(word) && node.keys.get(word).isEnd()) ?
-      true : false;
-	};
+  /**
+   * Inserts a word into the trie.
+   * @param {string} word
+   * @param {Node} node
+   * @return {void}
+   */
+  insert = (word, node = this.root) => {
+    if (word.length === 0) {
+      node.setEnd(true);
+      return;
+    }
+    if (node.keys.has(word[0])) {
+      this.insert(word.substr(1), node.keys.get(word[0]));
+    } else {
+      node.keys.set(word[0], new TrieNode());
+      return this.insert(word.substr(1), node.keys.get(word[0]));
+    }
+  };
+}
 
-	this.print = function() {
-		let words = new Array();
-		let search = function(node, string) {
-			if (node.keys.size != 0) {
-				for (let letter of node.keys.keys()) {
-					search(node.keys.get(letter), string.concat(letter));
-				};
-				if (node.isEnd()) {
-					words.push(string);
-				};
-			} else {
-				string.length > 0 ? words.push(string) : undefined;
-				return;
-			};
-		};
-		search(this.root, new String());
-		return words.length > 0 ? words : mo;
-	};
-
-};
-
-module.exports = Trie;
+module.exports = { Trie, TrieNode };
