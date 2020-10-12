@@ -62,3 +62,18 @@ Which is `O(l*n)` where l is average length of words and n is number of words
 2. Within a trie, words with same prefix share the memory area, but in worst case, if no strings share same prefix (which is less possible in scrabble case), trie can take lot of memory O(M) where M is size of all nodes
 
 
+#### Screenshots
+
+###### React interfaces
+
+<p>
+<img src="public/react_interface.png" width="600" height="400" >
+<img src="public/react_input.png" width="600" height="400" >
+<img src="public/network.png" width="600" height="400" >
+</p>
+
+
+###### Server interactions
+<p>
+<img src="public/server.png" width="600" height="400" >
+</p>
