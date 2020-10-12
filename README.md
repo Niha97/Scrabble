@@ -15,8 +15,8 @@ docker-compose up -d
 # or "docker-compose up --build -d"
 # if you want to rebuild the containers
 ```
-5. It takes few seconds to build images when its ran first time.
-6. After it successfully builds both client and server images. Go to browser and hit localhost,
+5. It takes few moments to build image when it is running for the first time.
+6. After successful build, Go to browser and hit localhost,
 7. You should see React pages and can use the interface to hit server
 8. You can also use localhost:8080 to hit server directly
 
@@ -50,7 +50,7 @@ Trie is very good for lookups, as it depends only on number of characters in the
 ###### Time Complexity
 
 1. Program is designed efficiently where we initialize trie only once and re-use it for every request
-2. So time complexity of the program is Creation + Finding Words
+2. So time complexity of the program is trie creation and finding words
 3. The worst case for creating trie from given words depends on number of words and average length of words
 Which is `O(l*n)` where l is average length of words and n is number of words
 4. Finding words formed by given letters in trie depends on length of the input letters and number of possible words.
