@@ -60,7 +60,9 @@ class Scrabble {
    */
   sort () {
     this.scoreBoard.sort((a, b) => {
-      return a.score < b.score ? 1 : -1;
+      if(a.score !== b.score) {
+        return a.score < b.score ? 1 : -1;
+      }
     });
   };
 
@@ -73,7 +75,6 @@ class Scrabble {
     this.trie = await getTrie();
     const list = this.normalize(input);
     this.search(this.trie.root, list, "", 0);
-    this.sort();
     return this.scoreBoard.map((obj) => obj.string);
   };
 
@@ -85,6 +86,9 @@ class Scrabble {
   insert (string, score) {
     if (string !== "" && this.words.indexOf(string) === -1) {
       this.scoreBoard.push({ string, score });
+      console.log(this.scoreBoard);
+      this.sort();
+      console.log(this.scoreBoard);
       this.words.push(string);
     }
   };
