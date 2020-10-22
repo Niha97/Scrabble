@@ -1,3 +1,5 @@
+"use strict";
+
 // Scrabble fixed score points for alphabets
 const points = {
   "a|e|i|l|n|o|r|t|u": 1,

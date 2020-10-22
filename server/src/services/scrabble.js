@@ -1,9 +1,10 @@
-const getTrie = require("./dictionary");
+"use strict";
+
+const getTrie = require("./dictionary")();
 const points = require("./points.js");
 
 class Scrabble {
   constructor() {
-    this.trie = getTrie();
     this.words = [];
     this.scoreBoard = [];
   }
@@ -16,7 +17,7 @@ class Scrabble {
    * @param string string
    * @param score score of string
    */
-  search = (node, list, string, score) => {
+  search (node, list, string, score) {
     // if list = [a,h,t], to avoid strings like `that`
     // which contains duplicates
     list = list.filter((l) => string.indexOf(l) === -1);
@@ -49,7 +50,7 @@ class Scrabble {
    * @param {string} input - "HAT"
    * @returns {Array} - "[a,h,t]"
    */
-  normalize = (input) => {
+  normalize (input) {
     return input.toLowerCase().split("").sort();
   };
 
@@ -57,7 +58,7 @@ class Scrabble {
    * Sorts strings scoreBoard based on strings score
    * @return {Object}
    */
-  sort = () => {
+  sort () {
     this.scoreBoard.sort((a, b) => {
       return a.score < b.score ? 1 : -1;
     });
@@ -68,7 +69,8 @@ class Scrabble {
    * @param {string} input - "aht"
    * @returns {Array} - ["hat","th","ha","ah","at","a"]
    */
-  getWords = (input) => {
+  async getWords (input) {
+    this.trie = await getTrie();
     const list = this.normalize(input);
     this.search(this.trie.root, list, "", 0);
     this.sort();
@@ -80,7 +82,7 @@ class Scrabble {
    * @param {string} string
    * @param {number} score
    */
-  insert = (string, score) => {
+  insert (string, score) {
     if (string !== "" && this.words.indexOf(string) === -1) {
       this.scoreBoard.push({ string, score });
       this.words.push(string);

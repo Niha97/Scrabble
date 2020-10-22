@@ -1,3 +1,5 @@
+"use strict";
+
 //Trie data structure
 class TrieNode {
   constructor() {
@@ -28,7 +30,7 @@ class Trie {
    * @param {Node} node
    * @return {void}
    */
-  insert = (word, node = this.root) => {
+  insert (word, node = this.root) {
     if (word.length === 0) {
       node.setEnd(true);
       return;
