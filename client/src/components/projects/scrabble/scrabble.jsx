@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import useLoading from "./hooks/use-loading";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Loader from "./loader";
-import * as scrabbleActions from "../store/scrabble/scrabble.actions";
+import useLoading from "../../hooks/use-loading";
+import Loader from "../../elements/loader";
+import * as scrabbleActions from "../../../store/scrabble/scrabble.actions";
 
 export const App = ({ words, getWords }) => {
   const [input, setInput] = useState("");
@@ -23,7 +23,8 @@ export const App = ({ words, getWords }) => {
   });
 
   return (
-    <section className="container">
+    <section className="scrabble">
+      <div className="scrabble-container">
       <div className="heading">
         <img
           className="heading-img"
@@ -58,6 +59,7 @@ export const App = ({ words, getWords }) => {
           <ol className="toDoList">{list}</ol>
         </div>
       )}
+      </div>
     </section>
   );
 };

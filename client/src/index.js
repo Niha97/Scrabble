@@ -1,19 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Router from "react-router/lib/Router";
-import browserHistory from "react-router/lib/browserHistory";
-// import match from "react-router/lib/match";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { makeRoutes } from "./routes";
 import store from "./store/store";
 import * as serviceWorker from "./serviceWorker";
 
-const routes = makeRoutes();
+import Routes from "./routes";
 
 ReactDOM.render(
   <Provider store={store()}>
-    <Router history={browserHistory}>{routes}</Router>
+    <Router ><Routes /></Router>
   </Provider>,
   document.getElementById("root")
 );

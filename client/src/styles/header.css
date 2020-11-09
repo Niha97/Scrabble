@@ -1,0 +1,23 @@
+.header {
+  background: white;
+}
+
+
+.header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.header li {
+  align-self: center;
+  margin: 10px;
+}
+
+.header li:last-child {
+  align-self: end;
+}
+
+.header li > a {
+  text-decoration: none;
+}
