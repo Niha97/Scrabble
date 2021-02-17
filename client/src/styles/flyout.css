@@ -1,0 +1,27 @@
+.icon {
+  position: absolute;
+  width: 8px;
+  height: 20px;
+  margin-left: 2px;
+}
+
+.flyout-modal {
+  position: absolute;
+  z-index: 1000;
+  width: 200px;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, .12);
+  animation: flyout-slide-bottom .3s ease forwards;
+}
+
+@keyframes flyout-slide-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

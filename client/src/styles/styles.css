@@ -10,5 +10,6 @@ body {
   max-width: 70rem;
   margin: auto;
   min-height: 80vh;
-  background: grey;
+  text-align: center;
+  vertical-align: middle;
 }

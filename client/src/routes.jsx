@@ -1,19 +1,23 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Switch, Route } from "react-router";
 import App from "./components/app";
-import Home from "./components/home/home";
-import Blog from "./components/blog/blog";
-import Scrabble from "./components/projects/scrabble/scrabble";
+
+const Home  = lazy(() => import('./components/home/home'));
+const Blog  = lazy(() => import('./components/blog/blog'));
+const Scrabble  = lazy(() => import('./components/projects/scrabble/scrabble'));
+
 
 const Routes = () => {
   return (
     <App>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/home" component={Home} />
-        <Route  path="/scrabble" component={Scrabble} />
-        <Route  path="/blog" component={Blog} />
-      </Switch>
+      <Suspense fallback={<div>Page is Loading...</div>}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
+          <Route  path="/scrabble" component={Scrabble} />
+          <Route  path="/blog" component={Blog} />
+        </Switch>
+      </Suspense>
     </App>
   )
 }
