@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from "react";
 
-
-export const OutsideClick = ({children, onClick, className}) => {
+export const OutsideClick = ({ children, onClick, className }) => {
   const containerRef = useRef(null);
 
   const handleClick = (ev) => {
-    if( containerRef.current && !containerRef.current.contains(ev.target) ) {
+    if (containerRef.current && !containerRef.current.contains(ev.target)) {
       onClick(ev);
     }
-  }
+  };
 
   useEffect(() => {
     window.addEventListener("click", handleClick);
@@ -22,6 +21,10 @@ export const OutsideClick = ({children, onClick, className}) => {
       {children}
     </div>
   );
+};
+
+OutsideClick.defaultProps = {
+  onClick: () => {},
 };
 
 export default OutsideClick;

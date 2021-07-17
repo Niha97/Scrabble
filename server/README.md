@@ -25,7 +25,7 @@
 3. Navigate to server folder of the project, and run below commands in terminal sequentially
 
 ```Bash
-docker build --tag scrabble-server-image:1.0 .
+docker build . --tag scrabble-server-image:1.0 .
 ```
 
 . is important in above command.

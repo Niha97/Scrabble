@@ -8,23 +8,22 @@
   <img src="public/redux.png" width="200" height="200">
 </p>
 
-
-
 ### Prerequisites
 
-* Docker
-* or NodeJS > 12.0
+- Docker
+- or NodeJS > 12.0
 
 > Installing any one of them can run the project, Docker is preferred :)
 
 #### Through Docker
 
 1. Install docker desktop
-..... [Mac](https://docs.docker.com/docker-for-mac/install/)
+   ..... [Mac](https://docs.docker.com/docker-for-mac/install/)
    ..... [Windows](https://docs.docker.com/docker-for-windows/install/)
 2. Start Docker from applications
 3. Navigate to client folder in terminal
 4. Run following commands
+
 ```Bash
 docker build --tag scrabble-client-image:1.0 .
 ```
@@ -56,17 +55,18 @@ npm start
 
 4. Open browser and hit `localhost:3000` to seee react pages
 
-
 > UX is borrowed from code pen screens
 
 ##### Scripts
 
 For prettier code :D
-``` bash
+
+```bash
 npm format
 ```
+
 For producution build
+
 ```bash
 npm build
 ```
-

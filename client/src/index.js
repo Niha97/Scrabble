@@ -10,7 +10,9 @@ import Routes from "./routes";
 
 ReactDOM.render(
   <Provider store={store()}>
-    <Router ><Routes /></Router>
+    <Router>
+      <Routes />
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

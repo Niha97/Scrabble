@@ -51,7 +51,7 @@ const TrieDictionary = function() {
       console.log("calling from server");
       return trie;
     } else {
-      console.log("callinf from cache");
+      console.log("calling from cache");
       return trie
     }
   }

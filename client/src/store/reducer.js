@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import scrabble from "./scrabble/scrabble";
+import home from "./home/home";
 
-export default combineReducers({
-  scrabble,
-});
+export default (asyncReducers) =>
+  combineReducers(
+    {
+      home,
+      ...asyncReducers
+    }
+  );

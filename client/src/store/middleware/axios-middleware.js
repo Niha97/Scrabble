@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 /**
  * Middleware which takes custom action objects and converts
  * them to dispatchable actions wih plain objects
@@ -9,7 +8,7 @@ import axios from "axios";
  * @param next is thunk middlware which dispatches plain object actions
  * @param action is our custom object
  */
-const axiosMiddleware = store => next => action => {
+const axiosMiddleware = () => (next) => (action) => {
   const { types, request, ...rest } = action;
   if (!request) {
     return next(action);
@@ -24,4 +23,3 @@ const axiosMiddleware = store => next => action => {
 };
 
 export default axiosMiddleware;
-

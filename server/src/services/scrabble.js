@@ -86,9 +86,7 @@ class Scrabble {
   insert (string, score) {
     if (string !== "" && this.words.indexOf(string) === -1) {
       this.scoreBoard.push({ string, score });
-      console.log(this.scoreBoard);
       this.sort();
-      console.log(this.scoreBoard);
       this.words.push(string);
     }
   };
